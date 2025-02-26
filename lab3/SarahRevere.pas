@@ -12,10 +12,13 @@ BEGIN {SarahRevere}
 
   QueryString := GetEnv('QUERY_STRING');
 
-  IF QueryString = 'lanterns=1' THEN
+  IF QueryString = 'lanterns=1'
+  THEN
     WRITELN('One lantern - The British are coming by land.')
-  ELSE IF QueryString = 'lanterns=2' THEN
-    WRITELN('Two lanterns - The British are coming by sea.')
   ELSE
-    WRITELN('Error: Invalid number of lanterns.');
+    IF QueryString = 'lanterns=2'
+    THEN
+      WRITELN('Two lanterns - The British are coming by sea.')
+    ELSE
+      WRITELN('Error: Invalid input.')
 END. {SarahRevere}
