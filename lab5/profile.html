@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Профиль</title>
+        <style>
+            body {
+                font-family:
+                    Golos UI,
+                    Arial,
+                    sans-serif;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #f0f0f0;
+            }
+            .profile-container {
+                width: 80%;
+                max-width: 1200px;
+                background-color: white;
+                padding: 20px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .profile-header {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .profile-header img {
+                border-radius: 16px;
+                margin-bottom: 10px;
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+            }
+            .profile-header h1 {
+                margin: 0;
+                font-size: 24px;
+            }
+            .profile-header p {
+                margin: 5px 0;
+                font-size: 14px;
+                color: #666;
+            }
+            .post-count {
+                background-color: #f0f0f0;
+                padding: 5px 10px;
+                border-radius: 5px;
+                font-size: 12px;
+                color: #666;
+                display: inline-block;
+                margin-top: 10px;
+            }
+            .gallery {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+            .gallery img {
+                width: 100%;
+                aspect-ratio: 1 / 1;
+                object-fit: cover;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="profile-container">
+            <div class="profile-header">
+                <img src="vanya.jpg" alt="vanya" />
+                <h1>Ваня Денисов</h1>
+                <p>
+                    Привет! Я системный аналитик в ACME :) Тут моя жизнь только
+                    для самых классных!
+                </p>
+                <div class="post-count">🖼 43 поста</div>
+            </div>
+            <div class="gallery">
+                <img src="zima.jpg" alt="zima" />
+                <img src="cola.jpg" alt="cola" />
+                <img src="tort.jpg" alt="tort" />
+                <img src="rockets.jpg" alt="rockets" />
+                <img src="ulica.jpg" alt="ulica" />
+                <img src="castrulya.jpg" alt="castrulya" />
+            </div>
+        </div>
+    </body>
+</html>
