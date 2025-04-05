@@ -1,30 +1,51 @@
 [
   {
     "user-id": 2,
-    "image": "images/castrulya.jpg"
+    "image": "images/castrulya.jpg",
+    "like-count": 13,
+    "text": "Каструля.",
+    "time": 1743853992
   },
   {
     "user-id": 2,
-    "image": "images/cola.jpg"
+    "image": "images/cola.jpg",
+    "like-count": 7,
+    "text": "Это здание иногда называют колой.",
+    "time": 1743854061
   },
   {
     "user-id": 3,
-    "image": "images/riba.jpg"
+    "image": "images/riba.jpg",
+    "like-count": 534,
+    "text": "Сушёная рыбка.",
+    "time": 1742851061
   },
   {
     "user-id": 2,
-    "image": "images/rockets.jpg"
+    "image": "images/rockets.jpg",
+    "like-count": 7,
+    "text": "Интересная добавка.",
+    "time": 1743754061
   },
   {
     "user-id": 2,
-    "image": "images/tort.jpg"
+    "image": "images/tort.jpg",
+    "like-count": 7,
+    "text": "Торт.",
+    "time": 1743834021
   },
   {
     "user-id": 2,
-    "image": "images/ulica.jpg"
+    "image": "images/ulica.jpg",
+    "like-count": 7,
+    "text": "Отличная погода.",
+    "time": 1733854041
   },
   {
     "user-id": 2,
-    "image": "images/zima.jpg"
+    "image": "images/zima.jpg",
+    "like-count": 203,
+    "text": "Так красиво сегодня на улице! Настоящая зима)) Вспоминается Бродский: «Поздно ночью, в уснувшей долине, на самом дне, в городке, занесенном снегом по ручку двери…",
+    "time": 1743554061
   }
 ]

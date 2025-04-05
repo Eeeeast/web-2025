@@ -24,7 +24,7 @@ $posts = json_decode($usersPosts, true);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title><?= $user["name"] ?></title>
 </head>
 <body>
     <div>
@@ -32,20 +32,18 @@ $posts = json_decode($usersPosts, true);
             <img src="<?= $user["ava"]["src"] ?>" alt="<?= $user["ava"][
     "alt"
 ] ?>" width="30" />
-            <h1><?php echo $user["name"]; ?></h1>
+            <h1><?= $user["name"] ?></h1>
         </div>
         <div>
-            <p><?php echo $user["about"]; ?></p>
-            <p>🖼<?php echo $user["posts"]; ?> поста</p>
+            <p><?= $user["about"] ?></p>
+            <p>🖼<?= $user["posts"] ?> поста</p>
         </div>
         <div>
             <?php foreach ($posts as $post) {
                 if ($post["user-id"] == $userId) {
-                    echo "<div>";
                     echo '<img src="' .
                         $post["image"] .
                         '" alt="Post" width="200" />';
-                    echo "</div>";
                 }
             } ?>
         </div>
