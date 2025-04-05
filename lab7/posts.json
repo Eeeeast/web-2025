@@ -1,0 +1,30 @@
+[
+  {
+    "user-id": 2,
+    "image": "images/castrulya.jpg"
+  },
+  {
+    "user-id": 2,
+    "image": "images/cola.jpg"
+  },
+  {
+    "user-id": 3,
+    "image": "images/riba.jpg"
+  },
+  {
+    "user-id": 2,
+    "image": "images/rockets.jpg"
+  },
+  {
+    "user-id": 2,
+    "image": "images/tort.jpg"
+  },
+  {
+    "user-id": 2,
+    "image": "images/ulica.jpg"
+  },
+  {
+    "user-id": 2,
+    "image": "images/zima.jpg"
+  }
+]

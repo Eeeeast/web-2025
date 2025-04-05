@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "John",
+    "about": "I'm John.",
+    "posts": 0,
+    "ava": {
+      "src": "images/john.jpg",
+      "alt": "john"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Ваня Денисов",
+    "about": "Привет! Я системный аналитик в ACME :) Тут моя жизнь только для самых классных!",
+    "posts": 43,
+    "ava": {
+      "src": "images/vanya.jpg",
+      "alt": "vanya"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Лиза Дёмина",
+    "about": "Я Лиза Дёмина.",
+    "posts": 12,
+    "ava": {
+      "src": "images/liza.jpg",
+      "alt": "liza"
+    }
+  }
+]
