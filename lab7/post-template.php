@@ -9,7 +9,7 @@
         <div>
             <button type="button">❤️<?= $post["like-count"] ?></button>
         </div>
-        <p><?= $post["text"] ?></p>
+        <pre><?= $post["text"] ?></pre>
         <p><?= date("d-m-Y", $post["time"]) ?></p>
     </div>
 </div>
