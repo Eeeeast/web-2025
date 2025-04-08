@@ -1,17 +1,5 @@
 <?php
-$users = json_decode(file_get_contents("users.json"), true);
-$posts = json_decode(file_get_contents("posts.json"), true);
-
-function findUserById($id)
-{
-    global $users;
-    foreach ($users as $user) {
-        if ($user["id"] === $id) {
-            return $user;
-        }
-    }
-    return null;
-}
+include "user-utils.php";
 
 $userId = isset($_GET["id"]) ? (int) $_GET["id"] : 1;
 $user = findUserById($userId);
