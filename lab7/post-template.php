@@ -1,6 +1,6 @@
 <div>
     <div>
-        <img src="<?= findUserById($users, $post["user-id"])["ava"][
+        <img src="<?= findUserById($post["user-id"])["ava"][
             "src"
         ] ?>" alt="User Avatar" width="30" />
     </div>

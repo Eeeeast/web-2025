@@ -1,9 +1,10 @@
 <?php
-$usersData = file_get_contents("users.json");
-$users = json_decode($usersData, true);
+$users = json_decode(file_get_contents("users.json"), true);
+$posts = json_decode(file_get_contents("posts.json"), true);
 
-function findUserById($users, $id)
+function findUserById($id)
 {
+    global $users;
     foreach ($users as $user) {
         if ($user["id"] === $id) {
             return $user;
@@ -13,8 +14,6 @@ function findUserById($users, $id)
 }
 
 $filter = (int) $_GET["id"];
-$usersPosts = file_get_contents("posts.json");
-$posts = json_decode($usersPosts, true);
 ?>
 <!doctype html>
 <html lang="ru">
