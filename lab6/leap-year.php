@@ -16,7 +16,7 @@
         <?php if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $year = intval($_POST["year"]);
 
-            if ($year < 1 || $year > 9999) {
+            if ($year < 1 || $year > 30000) {
                 echo "Out of range";
             } elseif (
                 $year % 4 == 0 &&
