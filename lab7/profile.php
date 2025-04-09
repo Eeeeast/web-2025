@@ -1,7 +1,7 @@
 <?php
 include "user-utils.php";
 
-$userId = isset($_GET["id"]) ? (int) $_GET["id"] : 1;
+$userId = (int) $_GET["id"] ?? 1;
 $user = findUserById($userId);
 $user = $user ? $user : findUserById(1);
 ?>
