@@ -2,8 +2,7 @@
 include "user-utils.php";
 
 $userId = (int) $_GET["id"] ?? 1;
-$user = findUserById($userId);
-$user = $user ? $user : findUserById(1);
+$user = findUserById($userId) ?? findUserById(1);
 ?>
 <!DOCTYPE html>
 <html lang="en">
