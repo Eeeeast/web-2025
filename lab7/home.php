@@ -1,7 +1,7 @@
 <?php
 include "user-utils.php";
 
-$filter = (int) $_GET["id"];
+$filter = isset($_GET["id"]) ? (int) $_GET["id"] : null;
 ?>
 <!doctype html>
 <html lang="ru">

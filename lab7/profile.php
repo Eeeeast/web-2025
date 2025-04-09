@@ -2,7 +2,12 @@
 include "user-utils.php";
 
 $userId = (int) $_GET["id"] ?? 1;
-$user = findUserById($userId) ?? findUserById(1);
+$user = findUserById($userId);
+
+if (!$user) {
+    header("Location: home.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
