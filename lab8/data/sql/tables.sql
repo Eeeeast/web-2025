@@ -8,7 +8,7 @@ CREATE TABLE user (
     about TEXT,
     avatar_src VARCHAR(255),
     avatar_alt VARCHAR(50)
-);
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
 CREATE TABLE post (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -18,4 +18,4 @@ CREATE TABLE post (
     user_id INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE
-);
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
