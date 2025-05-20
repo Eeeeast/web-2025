@@ -5,18 +5,14 @@ DROP TABLE IF EXISTS user;
 CREATE TABLE user (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
-    email VARCHAR(100) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
     about TEXT,
-    posts INT DEFAULT 0,
     avatar_src VARCHAR(255),
-    avatar_alt VARCHAR(50),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    avatar_alt VARCHAR(50)
 );
 
 CREATE TABLE post (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    content TEXT NOT NULL,
+    description TEXT,
     image VARCHAR(255),
     like_count INT DEFAULT 0,
     user_id INT,
