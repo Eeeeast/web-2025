@@ -5,12 +5,12 @@ $stmt = $pdo->prepare("SELECT avatar_src FROM user WHERE id = ?");
 $stmt->execute([$post["user_id"]]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
-<div style="margin-bottom:20px;">
-    <img src="<?= htmlspecialchars(
+<div>
+    <img src="images/<?= htmlspecialchars(
         $user["avatar_src"]
     ) ?>" width="30" alt="Avatar">
     <br>
-    <img src="<?= htmlspecialchars(
+    <img src="images/<?= htmlspecialchars(
         $post["image"]
     ) ?>" width="300" alt="Post Image">
     <p><button>❤️ <?= (int) $post["like_count"] ?></button></p>
