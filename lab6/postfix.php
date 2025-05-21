@@ -49,13 +49,13 @@
                 }
             }
 
-            echo '<div>';
+            echo "<div>";
             if ($error) {
-                echo '<div>' . $error . "</div>";
+                echo "<div>" . $error . "</div>";
             } elseif (count($stack) !== 1) {
-                echo '<div>Некорректное выражение</div>';
+                echo "<div>Некорректное выражение</div>";
             } else {
-                echo "Результат: " $stack[0];
+                echo "Результат: " . $stack[0];
             }
             echo "</div>";
         } ?>

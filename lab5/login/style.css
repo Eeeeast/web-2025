@@ -33,7 +33,7 @@ body {
     letter-spacing: -0.08px;
 }
 
-data {
+.data {
     width: 343px;
     height: 44px;
     border-style: none;
