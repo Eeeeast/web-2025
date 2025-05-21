@@ -1,0 +1,46 @@
+.av {
+    width: 32px;
+    height: 32px;
+    border-radius: 20%;
+}
+
+.name {
+    font-family: "Golos Text", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -0.15px;
+}
+
+.like {
+    width: 68px;
+    height: 30px;
+    border: none;
+    border-radius: 8px;
+}
+
+.comment {
+    font-family: "Golos Text", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: -0.15px;
+}
+
+.more {
+    font-family: "Golos Text", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: -0.15px;
+    color: #80;
+}
+
+.later {
+    font-family: "Golos Text", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -0.15px;
+    color: #80;
+}

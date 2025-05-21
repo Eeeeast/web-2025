@@ -1,0 +1,42 @@
+body {
+    font-family: "Golos Text", sans-serif;
+}
+
+.enter {
+    font-family: "Golos Text", sans-serif;
+    font-weight: 700;
+    font-size: 140px;
+    line-height: 180px;
+    letter-spacing: -1.5px;
+}
+
+.continue {
+    width: 343px;
+    height: 48px;
+    background-color: #22;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: "Golos Text", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+}
+
+.under-text {
+    color: #80;
+    font-family: "Golos Text", sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: -0.08px;
+}
+
+data {
+    width: 343px;
+    height: 44px;
+    border-style: none;
+    border-radius: 10px;
+    background-color: #f2f3f5;
+}

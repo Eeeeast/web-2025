@@ -1,0 +1,31 @@
+body {
+    font-family: "Golos Text", sans-serif;
+}
+
+.items {
+    width: 322px;
+    height: 322px;
+    border-radius: 2px;
+}
+
+h1 {
+    font-family: "Golos Text", sans-serif;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: -0.25px;
+}
+
+.sign {
+    font-family: "Golos Text", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: -0.15px;
+}
+
+.photo {
+    width: 123px;
+    height: 123px;
+    border-radius: 16px;
+}
