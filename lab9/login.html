@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Войти</title>
+        <style>
+            /* Базовые стили */
+            body {
+                font-family: "Golos UI", Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #fff;
+            }
+
+            .page-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .columns-wrapper {
+                display: flex;
+                gap: 107px;
+                align-items: center;
+            }
+
+            .welcome {
+                flex: 0 0 552px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .welcome__title {
+                font-size: 80px;
+                font-weight: bold;
+                margin-bottom: 20px;
+                line-height: 1;
+            }
+
+            .welcome__image {
+                width: 462px;
+                height: 501px;
+                object-fit: cover;
+            }
+
+            .login-form {
+                flex: 0 0 343px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .login-form__field {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .login-form__label {
+                font-size: 15px;
+            }
+
+            .login-form__input {
+                background-color: #f2f3f5;
+                padding: 10px;
+                border: none;
+                border-radius: 10px;
+                font-size: 15px;
+                width: 100%;
+            }
+
+            .login-form__hint {
+                font-size: 13px;
+                color: #666;
+            }
+
+            .login-form__button {
+                background-color: #222;
+                color: white;
+                padding: 12px;
+                border: none;
+                border-radius: 10px;
+                font-size: 15px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+                width: 100%;
+            }
+
+            .login-form__button:hover {
+                background-color: #b4b4b4;
+            }
+
+            .password-input-wrapper {
+                position: relative;
+                width: 100%;
+            }
+
+            .login-form__toggle-password {
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 5px;
+            }
+
+            .login-form__toggle-password:focus {
+                outline: none;
+            }
+
+            .login-form__toggle-icon {
+                width: 24px;
+                height: 24px;
+            }
+
+            @media (max-width: 900px) {
+                .columns-wrapper {
+                    flex-direction: column;
+                    gap: 30px;
+                }
+
+                .welcome {
+                    text-align: center;
+                    align-items: center;
+                }
+
+                .welcome__title {
+                    font-size: 60px;
+                }
+
+                .welcome__image {
+                    width: 100%;
+                    max-width: 462px;
+                    height: auto;
+                }
+
+                .login-form {
+                    width: 100%;
+                    max-width: 343px;
+                }
+            }
+
+            @media (max-width: 500px) {
+                .welcome__title {
+                    font-size: 48px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="page-container">
+            <div class="columns-wrapper">
+                <div class="welcome">
+                    <h1 class="welcome__title">Войти</h1>
+                    <img
+                        src="assets/login.jpg"
+                        alt="Добро пожаловать"
+                        class="welcome__image"
+                    />
+                </div>
+
+                <form class="login-form">
+                    <div class="login-form__field">
+                        <label for="email" class="login-form__label"
+                            >Электропочта</label
+                        >
+                        <input
+                            type="email"
+                            id="email"
+                            class="login-form__input"
+                            placeholder="*****@*****.***"
+                            required
+                        />
+                        <span class="login-form__hint"
+                            >Введите электропочту в формате
+                            *****@*****.***</span
+                        >
+                    </div>
+
+                    <div class="login-form__field">
+                        <label for="password" class="login-form__label"
+                            >Пароль</label
+                        >
+                        <div class="password-input-wrapper">
+                            <input
+                                type="password"
+                                id="password-input"
+                                class="login-form__input"
+                                placeholder="Введите пароль"
+                            />
+                            <button
+                                type="button"
+                                class="login-form__toggle-password"
+                                aria-label="Показать или скрыть пароль"
+                                id="toggle-password-btn"
+                            >
+                                <img
+                                    src="assets/Eye 24.svg"
+                                    alt="Показать пароль"
+                                    class="login-form__toggle-icon"
+                                    id="eye-icon"
+                                />
+                                <img
+                                    src="assets/Eye-off 24.svg"
+                                    alt="Скрыть пароль"
+                                    class="login-form__toggle-icon"
+                                    id="eye-off-icon"
+                                    style="display: none"
+                                />
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="login-form__button">
+                        Продолжить
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- JavaScript -->
+        <script>
+            const passwordInput = document.getElementById("password-input");
+            const eyeIcon = document.getElementById("eye-icon");
+            const eyeOffIcon = document.getElementById("eye-off-icon");
+            const toggleButton = document.getElementById("toggle-password-btn");
+
+            toggleButton.addEventListener("click", () => {
+                if (passwordInput.type === "password") {
+                    passwordInput.type = "text";
+                    eyeIcon.style.display = "none";
+                    eyeOffIcon.style.display = "inline";
+                    toggleButton.setAttribute("aria-label", "Скрыть пароль");
+                } else {
+                    passwordInput.type = "password";
+                    eyeIcon.style.display = "inline";
+                    eyeOffIcon.style.display = "none";
+                    toggleButton.setAttribute("aria-label", "Показать пароль");
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -20,14 +20,20 @@ function generatePassword(length = 12) {
 }
 
 function getRandomChar(str) {
-  return str[Math.floor(Math.random() * str.length)];
+  return str[~~(Math.random() * str.length)];
 }
 
 function shuffleString(str) {
-  return str
-    .split("")
-    .sort(() => Math.random())
-    .join("");
+  var a = [...str],
+    n = a.length;
+
+  for (var i = n - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = a[i];
+    a[i] = a[j];
+    a[j] = tmp;
+  }
+  return a.join("");
 }
 
 console.log(generatePassword(12));
