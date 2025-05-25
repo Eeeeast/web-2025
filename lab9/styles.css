@@ -99,8 +99,12 @@
     width: 24px;
     height: 24px;
     background: url("assets/Eye 24.svg") 0 0 no-repeat;
+    filter: invert(13%) sepia(1%) saturate(4%) hue-rotate(332deg)
+        brightness(103%) contrast(101%);
 }
 
 .password-control.view {
     background: url("assets/Eye-off 24.svg") 0 0 no-repeat;
+    filter: invert(13%) sepia(1%) saturate(4%) hue-rotate(332deg)
+        brightness(103%) contrast(101%);
 }
