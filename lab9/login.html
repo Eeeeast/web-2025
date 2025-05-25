@@ -11,6 +11,19 @@
             href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap"
             rel="stylesheet"
         />
+        <script>
+            function show_hide_password(target) {
+                var input = document.getElementById("password-input");
+                if (input.getAttribute("type") == "password") {
+                    target.classList.add("view");
+                    input.setAttribute("type", "text");
+                } else {
+                    target.classList.remove("view");
+                    input.setAttribute("type", "password");
+                }
+                return false;
+            }
+        </script>
     </head>
     <body class="page">
         <div class="login-form">
@@ -38,13 +51,19 @@
 
                 <div class="input-field">
                     <label class="input-field__label">Пароль</label>
-                    <input
-                        id="password"
-                        type="password"
-                        name="password"
-                        class="input-field__input"
-                    />
-                    <label for="show-password"></label>
+                    <div class="password">
+                        <input
+                            type="password"
+                            id="password-input"
+                            name="password"
+                            class="input-field__input"
+                        />
+                        <a
+                            href="#"
+                            class="password-control"
+                            onclick="return show_hide_password(this);"
+                        ></a>
+                    </div>
                 </div>
 
                 <button type="submit" class="login-form__button button">

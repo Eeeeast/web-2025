@@ -87,3 +87,20 @@
     border-radius: 10px;
     cursor: pointer;
 }
+
+.password {
+    position: relative;
+}
+
+.password-control {
+    position: absolute;
+    top: 11px;
+    right: 6px;
+    width: 24px;
+    height: 24px;
+    background: url("assets/Eye 24.svg") 0 0 no-repeat;
+}
+
+.password-control.view {
+    background: url("assets/Eye-off 24.svg") 0 0 no-repeat;
+}
