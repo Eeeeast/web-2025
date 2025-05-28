@@ -51,7 +51,7 @@
 }
 
 .input-field__label {
-    color: #222222;
+    color: #222;
     font-size: 15px;
     margin-bottom: 5px;
 }
@@ -74,7 +74,7 @@
 .button {
     height: 48px;
     margin-top: 20px;
-    background-color: #222222;
+    background-color: #222;
     color: white;
     font-size: 16px;
     font-weight: 500;
@@ -93,9 +93,9 @@
     right: 6px;
     width: 24px;
     height: 24px;
-    background: url("assets/Eye 24.svg") 0 0 no-repeat;
+    background: no-repeat url("assets/Eye 24.svg");
 }
 
 .password-control.view {
-    background: url("assets/Eye-off 24.svg") 0 0 no-repeat;
+    background: no-repeat url("assets/Eye-off 24.svg");
 }
