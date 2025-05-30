@@ -74,13 +74,21 @@ body {
     max-width: 474px;
 }
 
+.post__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
 .post__like {
     display: flex;
     flex-direction: row;
     cursor: pointer;
     padding: 6px 12px;
     min-width: 68px;
-    border-radius: 8px;
+    border-radius: 20px; /* More rounded to match design */
     height: 30px;
     width: 78px;
     margin-top: 16px;
@@ -88,12 +96,12 @@ body {
     align-items: center;
     font-size: 15px;
     font-weight: 400;
-    background-color: rgba(34, 34, 34, 0.05);
+    background-color: #f2f3f5; /* Match login page input background */
     border: none;
 }
 
 .post__like.active {
-    background-color: rgba(255, 168, 168, 0.894);
+    background-color: #ffe6e6; /* Softer red to match design */
 }
 
 .post__like-icon {
@@ -142,7 +150,7 @@ body {
     margin: 2px 0 0;
 }
 
-/* Слайдер */
+/* Слайдер (только для модального окна) */
 .slider {
     position: relative;
     width: 100%;
@@ -163,7 +171,6 @@ body {
     width: 100%;
     height: auto;
     display: block;
-    cursor: pointer;
 }
 
 .slider__controls {
@@ -200,17 +207,6 @@ body {
 .slider__arrow img {
     width: 12px;
     height: 12px;
-}
-
-.slider__counter {
-    position: absolute;
-    right: 20px;
-    top: 16px;
-    background-color: rgba(34, 34, 34, 0.5);
-    color: white;
-    padding: 4px 12px;
-    border-radius: 12px;
-    font-size: 15px;
 }
 
 /* Модальное окно */

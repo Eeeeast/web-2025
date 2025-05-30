@@ -1,7 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Инициализация слайдеров в постах
-  initPostSliders();
-
   // Инициализация кнопок "ещё"
   initContentToggles();
 
@@ -12,47 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initLikes();
 });
 
-// 1. Слайдер в постах
-function initPostSliders() {
-  document.querySelectorAll(".slider").forEach((slider) => {
-    const slides = slider.querySelectorAll(".slider__slide");
-    if (slides.length <= 1) return;
-
-    const prevBtn = slider.querySelector(".slider__arrow--prev");
-    const nextBtn = slider.querySelector(".slider__arrow--next");
-    const counter = slider.querySelector(".slider__current");
-
-    let currentSlide = 0;
-
-    // Обновление отображения слайдов
-    function updateSlider() {
-      slides.forEach((slide, index) => {
-        slide.classList.toggle("slider__slide--active", index === currentSlide);
-      });
-
-      if (counter) {
-        counter.textContent = currentSlide + 1;
-      }
-    }
-
-    // Переключение слайдов
-    function step(dir) {
-      currentSlide = (currentSlide + dir + slides.length) % slides.length;
-      updateSlider();
-    }
-
-    // Обработчики кнопок
-    if (prevBtn && nextBtn) {
-      prevBtn.addEventListener("click", () => step(-1));
-      nextBtn.addEventListener("click", () => step(1));
-    }
-
-    // Инициализация
-    updateSlider();
-  });
-}
-
-// 2. Модальное окно и 3. Закрытие по ESC
+// 1. Модальное окно и 2. Закрытие по ESC
 function initModal() {
   const overlay = document.querySelector(".overlay");
   const overlaySlider = overlay.querySelector(".slider");
@@ -68,29 +25,24 @@ function initModal() {
   }
 
   // Функция открытия модального окна
-  function openOverlay(images, index) {
+  function openOverlay(imageSrc) {
     // Очистка предыдущих слайдов
     overlaySlider.querySelectorAll(".slider__slide").forEach((slide) => {
       overlaySlider.removeChild(slide);
     });
 
-    // Создание новых слайдов
-    images.forEach((src, i) => {
-      const slide = document.createElement("div");
-      slide.className = `slider__slide ${i === index ? "slider__slide--active" : ""}`;
-      slide.innerHTML = `<img src="${src}" class="slider__image">`;
-      overlaySlider.appendChild(slide);
-    });
+    // Создание нового слайда (только одно изображение)
+    const slide = document.createElement("div");
+    slide.className = "slider__slide slider__slide--active";
+    slide.innerHTML = `<img src="${imageSrc}" class="slider__image">`;
+    overlaySlider.appendChild(slide);
 
     // Обновление счетчика
-    overlayCounter.textContent = `${index + 1} из ${images.length}`;
+    overlayCounter.textContent = "1 из 1";
 
     // Показ модального окна
     overlay.classList.add("show");
     document.body.style.overflow = "hidden";
-
-    // Инициализация слайдера в модальном окне
-    initModalSlider();
 
     // Подписка на событие клавиатуры
     document.addEventListener("keydown", handleKeydown);
@@ -103,61 +55,15 @@ function initModal() {
     document.removeEventListener("keydown", handleKeydown);
   }
 
-  // Инициализация слайдера в модальном окне
-  function initModalSlider() {
-    const slides = overlaySlider.querySelectorAll(".slider__slide");
-    if (slides.length <= 1) return;
-
-    const prevBtn = overlaySlider.querySelector(".slider__arrow--prev");
-    const nextBtn = overlaySlider.querySelector(".slider__arrow--next");
-
-    let currentSlide = 0;
-
-    // Находим активный слайд
-    slides.forEach((slide, index) => {
-      if (slide.classList.contains("slider__slide--active")) {
-        currentSlide = index;
-      }
-    });
-
-    // Обновление отображения слайдов
-    function updateSlider() {
-      slides.forEach((slide, index) => {
-        slide.classList.toggle("slider__slide--active", index === currentSlide);
-      });
-
-      overlayCounter.textContent = `${currentSlide + 1} из ${slides.length}`;
-    }
-
-    // Переключение слайдов
-    function step(dir) {
-      currentSlide = (currentSlide + dir + slides.length) % slides.length;
-      updateSlider();
-    }
-
-    // Обработчики кнопок
-    if (prevBtn && nextBtn) {
-      prevBtn.addEventListener("click", () => step(-1));
-      nextBtn.addEventListener("click", () => step(1));
-    }
-  }
-
   // Обработчики кликов по изображениям в постах
-  document.querySelectorAll(".post .slider__image").forEach((img) => {
+  document.querySelectorAll(".post__image").forEach((img) => {
     img.addEventListener("click", () => {
-      const post = img.closest(".post");
-      const images = Array.from(post.querySelectorAll(".slider__image")).map(
-        (i) => i.src,
-      );
-      const index = Array.from(post.querySelectorAll(".slider__image")).indexOf(
-        img,
-      );
-      openOverlay(images, index);
+      openOverlay(img.src);
     });
   });
 }
 
-// 4. Кнопка "ещё"
+// 3. Кнопка "ещё"
 function initContentToggles() {
   document.querySelectorAll(".post").forEach((post) => {
     const textEl = post.querySelector(".post__text");
