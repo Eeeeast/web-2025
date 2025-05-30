@@ -21,11 +21,11 @@ function initPostSliders() {
 
     const prevBtn = document.createElement("button");
     prevBtn.className = "post__slider-arrow post__slider-arrow--prev";
-    prevBtn.innerHTML = '<img src="assets/left.svg" alt="Previous">';
+    prevBtn.innerHTML = '<img src="assets/left.svg" alt="prev">';
 
     const nextBtn = document.createElement("button");
     nextBtn.className = "post__slider-arrow post__slider-arrow--next";
-    nextBtn.innerHTML = '<img src="assets/right.svg" alt="Next">';
+    nextBtn.innerHTML = '<img src="assets/right.svg" alt="next">';
 
     const counter = document.createElement("div");
     counter.className = "post__slider-counter";
@@ -164,25 +164,12 @@ function initContentToggles() {
 
     if (!textEl || !toggleBtn) return;
 
-    const originalStyle = textEl.style.webkitLineClamp;
-    textEl.style.webkitLineClamp = "unset";
+    toggleBtn.hidden = textEl.scrollHeight <= textEl.clientHeight;
 
-    const fullHeight = textEl.scrollHeight;
-
-    textEl.style.webkitLineClamp = originalStyle;
-
-    const clampedHeight = textEl.clientHeight;
-
-    if (fullHeight > clampedHeight) {
-      toggleBtn.hidden = false;
-
-      toggleBtn.addEventListener("click", () => {
-        const isExpanded = textEl.classList.toggle("expanded");
-        toggleBtn.textContent = isExpanded ? "свернуть" : "ещё...";
-      });
-    } else {
-      toggleBtn.hidden = true;
-    }
+    toggleBtn.addEventListener("click", () => {
+      const isExpanded = textEl.classList.toggle("expanded");
+      toggleBtn.textContent = isExpanded ? "свернуть" : "ещё...";
+    });
   });
 }
 
@@ -193,12 +180,7 @@ function initLikes() {
       const isActive = likeBtn.classList.contains("active");
 
       likeBtn.classList.toggle("active");
-
-      if (isActive) {
-        counter.textContent = parseInt(counter.textContent) - 1;
-      } else {
-        counter.textContent = parseInt(counter.textContent) + 1;
-      }
+      counter.textContent = parseInt(counter.textContent) + (isActive ? -1 : 1);
     });
   });
 }
