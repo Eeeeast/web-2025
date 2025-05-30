@@ -34,7 +34,6 @@
 }
 
 .login-form__image-pic {
-    display: block;
     max-width: 100%;
 }
 
@@ -71,7 +70,7 @@
     margin-top: 5px;
 }
 
-.button {
+.login-form__button {
     height: 48px;
     margin-top: 20px;
     background-color: #222;

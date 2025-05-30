@@ -4,7 +4,7 @@ include "user-utils.php";
 $filter = isset($_GET["id"]) ? (int) $_GET["id"] : null;
 
 try {
-    $posts = getAllPosts();
+    $posts = getAllPosts($filter);
 } catch (Exception $e) {
     die("Error fetching posts: " . $e->getMessage());
 }
@@ -17,9 +17,7 @@ try {
 </head>
 <body>
     <?php foreach ($posts as $post): ?>
-        <?php if (!$filter || $post["user_id"] === $filter): ?>
-            <?php include "post-template.php"; ?>
-        <?php endif; ?>
+        <?php include "post-template.php"; ?>
     <?php endforeach; ?>
 </body>
 </html>

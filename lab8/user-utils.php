@@ -2,14 +2,28 @@
 
 include "db.php";
 
-function getAllPosts()
+function getAllPosts($userId = null)
 {
     global $pdo;
 
     try {
-        $stmt = $pdo->query(
-            "SELECT p.id, p.description AS text, p.image, p.like_count, p.user_id AS user_id, p.created_at AS time FROM post p ORDER BY p.created_at DESC"
-        );
+        $sql = "SELECT p.id, p.description AS text, p.image, p.like_count, p.user_id AS user_id, p.created_at AS time
+                FROM post p";
+
+        if ($userId !== null) {
+            $sql .= " WHERE p.user_id = ?";
+        }
+
+        $sql .= " ORDER BY p.created_at DESC";
+
+        $stmt = $pdo->prepare($sql);
+
+        if ($userId !== null) {
+            $stmt->execute([$userId]);
+        } else {
+            $stmt->execute();
+        }
+
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         die("Database error: " . $e->getMessage());
