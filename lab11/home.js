@@ -1,69 +1,162 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Инициализация кнопок "ещё"
-  initContentToggles();
-
-  // Инициализация модального окна
+  initPostSliders();
   initModal();
-
-  // Инициализация лайков
+  initContentToggles();
   initLikes();
 });
 
-// 1. Модальное окно и 2. Закрытие по ESC
+function initPostSliders() {
+  document.querySelectorAll(".post").forEach((post) => {
+    const images = post.querySelectorAll(".post__image");
+    if (images.length <= 1) return;
+
+    const slider = document.createElement("div");
+    slider.className = "post__slider";
+
+    const slidesContainer = document.createElement("div");
+    slidesContainer.className = "post__slides";
+
+    const controls = document.createElement("div");
+    controls.className = "post__slider-controls";
+
+    const prevBtn = document.createElement("button");
+    prevBtn.className = "post__slider-arrow post__slider-arrow--prev";
+    prevBtn.innerHTML = '<img src="assets/left.svg" alt="Previous">';
+
+    const nextBtn = document.createElement("button");
+    nextBtn.className = "post__slider-arrow post__slider-arrow--next";
+    nextBtn.innerHTML = '<img src="assets/right.svg" alt="Next">';
+
+    const counter = document.createElement("div");
+    counter.className = "post__slider-counter";
+    counter.textContent = `1 / ${images.length}`;
+
+    controls.appendChild(prevBtn);
+    controls.appendChild(nextBtn);
+    slider.appendChild(slidesContainer);
+    slider.appendChild(controls);
+    slider.appendChild(counter);
+
+    images.forEach((img, index) => {
+      const slide = document.createElement("div");
+      slide.className = `post__slide ${index === 0 ? "post__slide--active" : ""}`;
+      slide.appendChild(img.cloneNode(true));
+      slidesContainer.appendChild(slide);
+      img.remove();
+    });
+
+    post.querySelector(".post__content").appendChild(slider);
+
+    let currentSlide = 0;
+
+    function updateSlider() {
+      slidesContainer.querySelectorAll(".post__slide").forEach((slide, i) => {
+        slide.classList.toggle("post__slide--active", i === currentSlide);
+      });
+      counter.textContent = `${currentSlide + 1} / ${images.length}`;
+    }
+
+    prevBtn.addEventListener("click", () => {
+      currentSlide = (currentSlide - 1 + images.length) % images.length;
+      updateSlider();
+    });
+
+    nextBtn.addEventListener("click", () => {
+      currentSlide = (currentSlide + 1) % images.length;
+      updateSlider();
+    });
+  });
+}
+
 function initModal() {
   const overlay = document.querySelector(".overlay");
   const overlaySlider = overlay.querySelector(".slider");
+  const overlaySlidesContainer =
+    overlaySlider.querySelector(".slider__controls");
   const overlayClose = overlay.querySelector(".overlay__close");
   const overlayCounter = overlay.querySelector(".overlay__counter");
 
-  // Обработчик закрытия
   overlayClose.addEventListener("click", closeOverlay);
 
-  // Обработчик ESC
   function handleKeydown(e) {
     if (e.key === "Escape") closeOverlay();
   }
 
-  // Функция открытия модального окна
-  function openOverlay(imageSrc) {
-    // Очистка предыдущих слайдов
-    overlaySlider.querySelectorAll(".slider__slide").forEach((slide) => {
-      overlaySlider.removeChild(slide);
+  function openOverlay(postId, imageIndex = 0) {
+    const post = document.querySelector(`.post[data-post-id="${postId}"]`);
+    if (!post) return;
+
+    const images = Array.from(
+      post.querySelectorAll(".post__image, .post__slide .post__image"),
+    );
+    if (images.length === 0) return;
+
+    overlaySlider
+      .querySelectorAll(".slider__slide")
+      .forEach((slide) => slide.remove());
+
+    images.forEach((img, index) => {
+      const slide = document.createElement("div");
+      slide.className = `slider__slide ${index === imageIndex ? "slider__slide--active" : ""}`;
+      slide.innerHTML = `<img src="${img.src}" class="slider__image">`;
+      overlaySlider.insertBefore(slide, overlaySlidesContainer);
     });
 
-    // Создание нового слайда (только одно изображение)
-    const slide = document.createElement("div");
-    slide.className = "slider__slide slider__slide--active";
-    slide.innerHTML = `<img src="${imageSrc}" class="slider__image">`;
-    overlaySlider.appendChild(slide);
-
-    // Обновление счетчика
-    overlayCounter.textContent = "1 из 1";
-
-    // Показ модального окна
+    overlayCounter.textContent = `${imageIndex + 1} из ${images.length}`;
     overlay.classList.add("show");
     document.body.style.overflow = "hidden";
-
-    // Подписка на событие клавиатуры
     document.addEventListener("keydown", handleKeydown);
+
+    initModalSlider(images.length, imageIndex);
   }
 
-  // Функция закрытия модального окна
   function closeOverlay() {
     overlay.classList.remove("show");
     document.body.style.overflow = "";
     document.removeEventListener("keydown", handleKeydown);
   }
 
-  // Обработчики кликов по изображениям в постах
-  document.querySelectorAll(".post__image").forEach((img) => {
-    img.addEventListener("click", () => {
-      openOverlay(img.src);
+  function initModalSlider(totalImages, initialIndex) {
+    let currentIndex = initialIndex;
+    const prevBtn = overlaySlider.querySelector(".slider__arrow--prev");
+    const nextBtn = overlaySlider.querySelector(".slider__arrow--next");
+
+    function updateModalSlider() {
+      overlaySlider
+        .querySelectorAll(".slider__slide")
+        .forEach((slide, index) => {
+          slide.classList.toggle(
+            "slider__slide--active",
+            index === currentIndex,
+          );
+        });
+      overlayCounter.textContent = `${currentIndex + 1} из ${totalImages}`;
+    }
+
+    prevBtn.onclick = () => {
+      currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+      updateModalSlider();
+    };
+
+    nextBtn.onclick = () => {
+      currentIndex = (currentIndex + 1) % totalImages;
+      updateModalSlider();
+    };
+  }
+
+  document.querySelectorAll(".post").forEach((post) => {
+    const postId = post.dataset.postId;
+
+    post.querySelectorAll(".post__image").forEach((img) => {
+      img.addEventListener("click", () => openOverlay(postId));
+    });
+
+    post.querySelectorAll(".post__slide img").forEach((img, index) => {
+      img.addEventListener("click", () => openOverlay(postId, index));
     });
   });
 }
 
-// 3. Кнопка "ещё"
 function initContentToggles() {
   document.querySelectorAll(".post").forEach((post) => {
     const textEl = post.querySelector(".post__text");
@@ -71,44 +164,28 @@ function initContentToggles() {
 
     if (!textEl || !toggleBtn) return;
 
-    toggleBtn.hidden = true;
-
-    // Проверка, нужно ли показывать кнопку
-    const [fullHeight, clampedHeight] = getSizes(textEl);
-    const isOverflowing = fullHeight > clampedHeight;
-
-    if (isOverflowing) {
-      toggleBtn.hidden = false;
-
-      toggleBtn.addEventListener("click", () => {
-        const expanded = textEl.classList.toggle("expanded");
-        toggleBtn.textContent = expanded ? "свернуть" : "ещё...";
-      });
-    }
-  });
-
-  function getSizes(textEl) {
-    const clampedHeight = textEl.getBoundingClientRect().height;
-
-    // Сохраняем оригинальное состояние
-    const originalDisplay = textEl.style.display;
-    const originalLineClamp = textEl.style.webkitLineClamp;
-
-    // Временно убираем ограничения для измерения полной высоты
-    textEl.style.display = "block";
+    const originalStyle = textEl.style.webkitLineClamp;
     textEl.style.webkitLineClamp = "unset";
 
     const fullHeight = textEl.scrollHeight;
 
-    // Восстанавливаем оригинальное состояние
-    textEl.style.display = originalDisplay;
-    textEl.style.webkitLineClamp = originalLineClamp;
+    textEl.style.webkitLineClamp = originalStyle;
 
-    return [fullHeight, clampedHeight];
-  }
+    const clampedHeight = textEl.clientHeight;
+
+    if (fullHeight > clampedHeight) {
+      toggleBtn.hidden = false;
+
+      toggleBtn.addEventListener("click", () => {
+        const isExpanded = textEl.classList.toggle("expanded");
+        toggleBtn.textContent = isExpanded ? "свернуть" : "ещё...";
+      });
+    } else {
+      toggleBtn.hidden = true;
+    }
+  });
 }
 
-// Инициализация лайков
 function initLikes() {
   document.querySelectorAll(".post__like").forEach((likeBtn) => {
     likeBtn.addEventListener("click", () => {

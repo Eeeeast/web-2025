@@ -4,18 +4,14 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="home.css" />
-        <title>Social Network</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <title>Главная</title>
         <link
             href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap"
             rel="stylesheet"
         />
-        <script src="home.js"></script>
     </head>
     <body>
         <div class="feed">
-            <!-- Пост 1 -->
             <div class="post" data-post-id="1">
                 <div class="post__header">
                     <div class="post__user">
@@ -42,19 +38,17 @@
                         alt="like"
                         class="post__like-icon"
                     />
-                    <span class="counter">42</span>
+                    <span class="counter">203</span>
                 </div>
                 <p class="post__text">
-                    Так красиво сегодня на улице!\nНастоящая
-                    зима))\nВспоминается Бродский: «Поздно ночью, в уснувшей
-                    долине, на самом дне, в городке, занесенном снегом по ручку
-                    двери.
+                    Так красиво сегодня на улице! Настоящая зима)) Вспоминается
+                    Бродский: «Поздно ночью, в уснувшей долине, на самом дне, в
+                    городке, занесенном снегом по ручку двери.
                 </p>
                 <button class="post__content-toggle">ещё...</button>
                 <p class="post__time">2 часа назад</p>
             </div>
 
-            <!-- Пост 2 -->
             <div class="post" data-post-id="2">
                 <div class="post__header">
                     <div class="post__user">
@@ -73,13 +67,9 @@
             </div>
         </div>
 
-        <!-- Модальное окно -->
         <div class="overlay">
             <div class="overlay__content">
                 <div class="slider">
-                    <div class="slider__slide slider__slide--active">
-                        <img src="" alt="" class="slider__image" />
-                    </div>
                     <div class="slider__controls">
                         <div class="slider__arrows">
                             <button class="slider__arrow slider__arrow--prev">
@@ -97,5 +87,7 @@
                 </button>
             </div>
         </div>
+
+        <script src="home.js"></script>
     </body>
 </html>
