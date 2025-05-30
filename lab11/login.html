@@ -12,7 +12,6 @@
         <script>
             function show_hide_password(target) {
                 var input = document.getElementById("password-input");
-                if (!input) return false;
 
                 if (input.getAttribute("type") == "password") {
                     target.classList.add("view");
@@ -22,6 +21,29 @@
                     input.setAttribute("type", "password");
                 }
                 return false;
+            }
+
+            function validateForm(event) {
+                event.preventDefault();
+                var emailInput = document.querySelector('input[name="email"]');
+                var passwordInput = document.getElementById("password-input");
+                var email = emailInput.value;
+                var password = passwordInput.value;
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                var isValid = true;
+
+                emailInput.classList.remove("error");
+                passwordInput.classList.remove("error");
+
+                if (!emailRegex.test(email)) {
+                    emailInput.classList.add("error");
+                    isValid = false;
+                }
+                if (password.length < 8) {
+                    passwordInput.classList.add("error");
+                    isValid = false;
+                } else if (isValid)
+                    document.querySelector(".login-form__form").submit();
             }
         </script>
     </head>
@@ -36,7 +58,11 @@
                 />
             </div>
 
-            <form action="login" class="login-form__form">
+            <form
+                action="login"
+                class="login-form__form"
+                onsubmit="validateForm(event)"
+            >
                 <div class="input-field">
                     <label class="input-field__label">Электропочта</label>
                     <input

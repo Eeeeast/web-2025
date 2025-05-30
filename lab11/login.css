@@ -64,6 +64,11 @@
     padding: 10px;
 }
 
+.input-field__input.error {
+    border: 1px solid red;
+    background-color: #ffe6e6;
+}
+
 .input-field__hint {
     color: #808080;
     font-size: 13px;
