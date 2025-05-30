@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="home.css" />
+        <title>Social Network</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap"
+            rel="stylesheet"
+        />
+        <script src="home.js"></script>
+    </head>
+    <body>
+        <div class="feed">
+            <!-- Пост 1 -->
+            <div class="post" data-post-id="1">
+                <div class="post__header">
+                    <div class="post__user">
+                        <img
+                            src="https://randomuser.me/api/portraits/women/44.jpg"
+                            alt="user avatar"
+                            class="post__avatar"
+                        />
+                        <p class="post__username">Анна Петрова</p>
+                    </div>
+                    <img src="assets/edit.svg" alt="Edit" class="post__edit" />
+                </div>
+                <div class="post__content">
+                    <div class="slider">
+                        <div class="slider__slide slider__slide--active">
+                            <img
+                                src="https://picsum.photos/id/1018/474/474"
+                                alt="Slide 1"
+                                class="slider__image"
+                            />
+                        </div>
+                        <div class="slider__slide">
+                            <img
+                                src="https://picsum.photos/id/1015/474/474"
+                                alt="Slide 2"
+                                class="slider__image"
+                            />
+                        </div>
+                        <div class="slider__slide">
+                            <img
+                                src="https://picsum.photos/id/1019/474/474"
+                                alt="Slide 3"
+                                class="slider__image"
+                            />
+                        </div>
+                        <div class="slider__controls">
+                            <div class="slider__arrows">
+                                <button
+                                    class="slider__arrow slider__arrow--prev"
+                                >
+                                    <img src="assets/left.svg" alt="Previous" />
+                                </button>
+                                <button
+                                    class="slider__arrow slider__arrow--next"
+                                >
+                                    <img src="assets/right.svg" alt="Next" />
+                                </button>
+                            </div>
+                        </div>
+                        <div class="slider__counter">
+                            <span class="slider__current">1</span>/3
+                        </div>
+                    </div>
+                </div>
+                <div class="post__like">
+                    <img
+                        src="assets/like.png"
+                        alt="Like"
+                        class="post__like-icon"
+                    />
+                    <span class="counter">42</span>
+                </div>
+                <p class="post__text">
+                    Этот пост содержит довольно длинное описание, которое не
+                    поместится в две строки и будет обрезано с добавлением
+                    троеточия в конце. Кнопка "ещё" позволит развернуть текст
+                    полностью, а затем свернуть его обратно.
+                </p>
+                <button class="post__content-toggle">ещё...</button>
+                <p class="post__time">15 мая 2023</p>
+            </div>
+
+            <!-- Пост 2 -->
+            <div class="post" data-post-id="2">
+                <div class="post__header">
+                    <div class="post__user">
+                        <img
+                            src="https://randomuser.me/api/portraits/men/32.jpg"
+                            alt="user avatar"
+                            class="post__avatar"
+                        />
+                        <p class="post__username">Иван Сидоров</p>
+                    </div>
+                    <img src="assets/edit.svg" alt="Edit" class="post__edit" />
+                </div>
+                <div class="post__content">
+                    <div class="slider">
+                        <div class="slider__slide slider__slide--active">
+                            <img
+                                src="https://picsum.photos/id/1040/474/474"
+                                alt="Slide 1"
+                                class="slider__image"
+                            />
+                        </div>
+                        <div class="slider__slide">
+                            <img
+                                src="https://picsum.photos/id/1044/474/474"
+                                alt="Slide 2"
+                                class="slider__image"
+                            />
+                        </div>
+                        <div class="slider__controls">
+                            <div class="slider__arrows">
+                                <button
+                                    class="slider__arrow slider__arrow--prev"
+                                >
+                                    <img src="assets/left.svg" alt="Previous" />
+                                </button>
+                                <button
+                                    class="slider__arrow slider__arrow--next"
+                                >
+                                    <img src="assets/right.svg" alt="Next" />
+                                </button>
+                            </div>
+                        </div>
+                        <div class="slider__counter">
+                            <span class="slider__current">1</span>/2
+                        </div>
+                    </div>
+                </div>
+                <div class="post__like active">
+                    <img
+                        src="assets/like.png"
+                        alt="Like"
+                        class="post__like-icon"
+                    />
+                    <span class="counter">128</span>
+                </div>
+                <p class="post__text">Короткий пост.</p>
+                <p class="post__time">10 мая 2023</p>
+            </div>
+        </div>
+
+        <!-- Модальное окно -->
+        <div class="overlay">
+            <div class="overlay__content">
+                <div class="slider">
+                    <div class="slider__slide slider__slide--active">
+                        <img src="" alt="" class="slider__image" />
+                    </div>
+                    <div class="slider__controls">
+                        <div class="slider__arrows">
+                            <button class="slider__arrow slider__arrow--prev">
+                                <img src="assets/left.svg" alt="Previous" />
+                            </button>
+                            <button class="slider__arrow slider__arrow--next">
+                                <img src="assets/right.svg" alt="Next" />
+                            </button>
+                        </div>
+                    </div>
+                    <div class="overlay__counter">1 из 3</div>
+                </div>
+                <button class="overlay__close">
+                    <img src="assets/close.svg" alt="Close" />
+                </button>
+            </div>
+        </div>
+    </body>
+</html>
