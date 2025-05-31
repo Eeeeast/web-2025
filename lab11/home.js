@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   initPostSliders();
   initModal();
-  initContentToggles();
   initLikes();
 });
 
@@ -153,22 +152,6 @@ function initModal() {
 
     post.querySelectorAll(".post__slide img").forEach((img, index) => {
       img.addEventListener("click", () => openOverlay(postId, index));
-    });
-  });
-}
-
-function initContentToggles() {
-  document.querySelectorAll(".post").forEach((post) => {
-    const textEl = post.querySelector(".post__text");
-    const toggleBtn = post.querySelector(".post__content-toggle");
-
-    if (!textEl || !toggleBtn) return;
-
-    toggleBtn.hidden = textEl.scrollHeight <= textEl.clientHeight;
-
-    toggleBtn.addEventListener("click", () => {
-      const isExpanded = textEl.classList.toggle("expanded");
-      toggleBtn.textContent = isExpanded ? "свернуть" : "ещё...";
     });
   });
 }

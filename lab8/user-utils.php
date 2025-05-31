@@ -14,8 +14,6 @@ function getAllPosts($userId = null)
             $sql .= " WHERE p.user_id = ?";
         }
 
-        $sql .= " ORDER BY p.created_at DESC";
-
         $stmt = $pdo->prepare($sql);
 
         if ($userId !== null) {
