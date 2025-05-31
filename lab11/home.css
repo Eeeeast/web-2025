@@ -2,21 +2,17 @@ body {
     font-family: "Golos Text", sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #fafafa;
+    background-color: white;
 }
 
-.feed {
+.home {
     margin: 32px auto;
     width: 474px;
 }
 
-.post {
-    padding: 16px;
-}
-
 .post__header {
     display: flex;
-    margin-bottom: 10px;
+    margin: 10px 0;
     align-items: center;
     justify-content: space-between;
 }
@@ -104,7 +100,7 @@ body {
 
 .post__like {
     display: flex;
-    padding: 6px 12px;
+    padding: 6px;
     border-radius: 8px;
     background-color: #2222220d;
     align-items: center;
@@ -221,8 +217,7 @@ body {
 .overlay__counter {
     position: absolute;
     top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 47%;
     color: white;
     font-size: 15px;
 }
@@ -237,4 +232,8 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+
+.counter {
+    margin: 0;
 }

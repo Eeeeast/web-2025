@@ -85,9 +85,7 @@ function initModal() {
     const post = document.querySelector(`.post[data-post-id="${postId}"]`);
     if (!post) return;
 
-    const images = Array.from(
-      post.querySelectorAll(".post__image, .post__slide .post__image"),
-    );
+    const images = Array.from(post.querySelectorAll(".post__image"));
     if (images.length === 0) return;
 
     overlaySlider
